@@ -58,7 +58,17 @@ function showWeather(response) {
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${response.data.main.humidity}`; //collects humidity info
   let wind = document.querySelector("#wind");
-  wind.innerHTML = `${response.data.wind.speed}`;collects wind speed info
+  wind.innerHTML = `${response.data.wind.speed}`; //collects wind speed info
 }
 
-
+// getting data from the geo api
+document.querySelector(".myLocation").addEventListener("click", () => {
+  function retrievePosition(position) {
+    let geoApiKey = "5bd76300836a0463d8f43511534ac83e";
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${geoApiKey}`;
+    axios.get(url).then(showWeather);
+  }
+  navigator.geolocation.getCurrentPosition(retrievePosition);
+});

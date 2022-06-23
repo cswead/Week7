@@ -9,11 +9,14 @@
       src="https://kit.fontawesome.com/65d4cafb1f.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
   </head>
   <body>
-    <form>
+    <div class="container">
       <div class="row">
-        <div class="col-9">
+         <div class="col-9">
+    <form>
           <input
             type="search"
             ;
@@ -21,12 +24,17 @@
             ;
             class="searchInput"
           />
+           </form>
         </div>
-      </div>
-      <div class="col-3 p-0">
+      <div class="col-3">
+        </form>
         <input type="submit" ; class="submitButton" ; value="search" ; />
+        </form>
       </div>
-    </form>
+   </form>
+  </br>
+   <hr/>
+    <div class="col-6">
     <h1 id="chosenCity">New York</h1>
     <ul>
       <li>
@@ -38,21 +46,27 @@
         Humidity:
         <span id="humidity"></span>
         <strong> </strong>
-      </li>
-      <div class="col-6">
-        <div class="tempContainer">
+        </div>
+        </li>
+         <div class="col-6">
+        <span class="tempContainer">
           <canvas width="52" height="52"
             ><i class="fa-solid fa-cloud"></i
           ></canvas>
-          <div>
-            <span class="temp">22</span>
+            <span class="temp"><strong>22</strong></span>
             <span class="unit">°C</span>
+            </span>
           </div>
-        </div>
-      </div>
+        
     </ul>
-    <p>Charlotte Swead She Codes Project Week 7</p>
+    <div class="col-12">
+    <p>Charlotte Swead She Codes Project Week 7</p></div>
     <script src="Week7/Source/script.js"></script>
-    <link rel="stylesheet" href="Week7/Source/style.css" />
+    <link
+      rel="stylesheet"
+      href="/Users/charlotteswead/Documents/SheCodes Lessons/Week7/Week7/Source/style.css"
+    />
+  </div>
+</div>
   </body>
 </html>

@@ -59,6 +59,10 @@ function showWeather(response) {
   humidity.innerHTML = `${response.data.main.humidity}`; //collects humidity info
   let wind = document.querySelector("#wind");
   wind.innerHTML = `${response.data.wind.speed}`; //collects wind speed info
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute =
+    ("src",
+    `http://openweathermap.org/img/wn/${response.data.weather.icon}@2x.png`);
 }
 
 // getting data from the geo api
@@ -72,3 +76,4 @@ document.querySelector(".myLocation").addEventListener("click", () => {
   }
   navigator.geolocation.getCurrentPosition(retrievePosition);
 });
+console.log(response.data);

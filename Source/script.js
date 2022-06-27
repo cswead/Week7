@@ -54,7 +54,7 @@ function showWeather(response) {
   let city = document.querySelector("#topCity");
   city.innerHTML = response.data.name; // collects city info
   let temp = document.querySelector(".temp");
-  temp.innerHTML = `${response.data.main.temp}`; //collects temp into
+  temp.innerHTML = Math.round(response.data.main.temp); //collects temp into
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${response.data.main.humidity}`; //collects humidity info
   let wind = document.querySelector("#wind");
@@ -63,6 +63,7 @@ function showWeather(response) {
   iconElement.setAttribute =
     ("src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`); //changing the icon
+  celciusTemp = response.data.main.temp;
 }
 
 // getting data from the geo api
@@ -76,3 +77,26 @@ document.querySelector(".myLocation").addEventListener("click", () => {
   }
   navigator.geolocation.getCurrentPosition(retrievePosition);
 });
+
+//changing the temp based on celcius of farhrenhieght
+function showFarhrenheightTemp(event) {
+  event.preventDefault();
+  let farhrenhieghtTemperature = (celciusTemp * 9) / 5 + 32;
+  let temp = document.querySelector(".temp");
+  temp.innerHTML = Math.round(farhrenhieghtTemperature);
+}
+
+function showCelciusTemp(event) {
+  event.preventDefault();
+  let celciusTemperature = celciusTemp;
+  let temp = document.querySelector(".temp");
+  temp.innerHTML = Math.round(celciusTemperature);
+}
+
+let celciusTemp = null;
+
+let farhrenhieghtLink = document.querySelector(".fahrenheit");
+farhrenhieghtLink.addEventListener("click", showFarhrenheightTemp);
+
+let celciusLink = document.querySelector(".celcius");
+celciusLink.addEventListener("click", showCelciusTemp);

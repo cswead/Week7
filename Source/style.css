@@ -62,3 +62,17 @@ p {
   padding-top: 20px;
   color: #142d4c;
 }
+.forecastWeather {
+  color: #142d4c;
+}
+.weather-forecast {
+  color: #142d4c;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 20px;
+  box-sizing: content-box;
+}
+.weatherTempMin .weatherTempMax {
+  padding: 0%;
+  text-align: center;
+}

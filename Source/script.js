@@ -49,6 +49,31 @@ function apiChosenCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showWeather); //ads the weather call from API
 }
+//future temperature adding
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-3" >
+<div class="day1" >Tomorrow</div>
+<div><img src="http://openweathermap.org/img/wn/02d@2x.png" atl="clear" width="75
+  "/> 
+            <span class="weatherTempMin">12</span>
+            <span class="weatherTempMax">30</span>
+    </div>
+    </div>`;
+  });
+  forecastHTML = `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+// adding in weather info based on search
 
 function showWeather(response) {
   let city = document.querySelector("#topCity");
@@ -101,3 +126,4 @@ farhrenhieghtLink.addEventListener("click", showFarhrenheightTemp);
 
 let celciusLink = document.querySelector(".celcius");
 celciusLink.addEventListener("click", showCelciusTemp);
+displayForecast();

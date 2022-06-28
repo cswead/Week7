@@ -60,9 +60,10 @@ function showWeather(response) {
   let wind = document.querySelector("#wind");
   wind.innerHTML = `${response.data.wind.speed}`; //collects wind speed info
   let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute =
-    ("src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`); //changing the icon
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  ); //changing the icon
   celciusTemp = response.data.main.temp;
 }
 

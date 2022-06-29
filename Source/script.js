@@ -49,26 +49,44 @@ function apiChosenCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showWeather); //ads the weather call from API
 }
+
+//formating the date of the forecast
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 //future temperature adding
 
 function displayForecast(response) {
   let forecast = response.data.daily; //shows the daily forecast in the console
+  console.log(response.data.daily);
   let forecastElement = document.querySelector(".weather-forecast");
 
   let forecastHTML = `<div class="row">`;
 
-  forecast.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
     <div class="col-3" >
-<div class="day1" >${forecastDay.dt}</div>
-<div><img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" atl="clear" width="75
+<div class="day1" >${formatDay(forecastDay.dt)}</div>
+<div><img src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }@2x.png" atl="clear" width="75
   "/> </br>
-            <span class="weatherTempMin"${forecastDay.temp.min}°></span>
-            <span class="weatherTempMax">${forecastDay.temp.max}°</span>
+            <span class="weatherTempMin"${Math.round(
+              forecastDay.temp.min
+            )}°></span>
+            <span class="weatherTempMax">${Math.round(
+              forecastDay.temp.max
+            )}°</span>
             </div>
     </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;

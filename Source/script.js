@@ -151,6 +151,8 @@ function showCelciusTemp(event) {
   temp.innerHTML = Math.round(celciusTemperature);
 }
 
+//calls
+
 let celciusTemp = null;
 
 let farhrenhieghtLink = document.querySelector(".fahrenheit");

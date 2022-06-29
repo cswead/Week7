@@ -52,10 +52,10 @@ function apiChosenCity(city) {
 //future temperature adding
 
 function displayForecast() {
-  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastElement = document.querySelector(".weather-forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat"];
+  let days = ["Thu", "Fri", "Sat", "Sun"];
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
@@ -63,13 +63,13 @@ function displayForecast() {
     <div class="col-3" >
 <div class="day1" >Tomorrow</div>
 <div><img src="http://openweathermap.org/img/wn/02d@2x.png" atl="clear" width="75
-  "/> 
+  "/> </br>
             <span class="weatherTempMin">12</span>
             <span class="weatherTempMax">30</span>
-    </div>
+            </div>
     </div>`;
   });
-  forecastHTML = `</div>`;
+  forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
@@ -126,4 +126,5 @@ farhrenhieghtLink.addEventListener("click", showFarhrenheightTemp);
 
 let celciusLink = document.querySelector(".celcius");
 celciusLink.addEventListener("click", showCelciusTemp);
+
 displayForecast();

@@ -52,21 +52,21 @@ function apiChosenCity(city) {
 //future temperature adding
 
 function displayForecast(response) {
-  console.log(response.data.daily); //shows the daily forecast
+  let forecast = response.data.daily; //shows the daily forecast in the console
   let forecastElement = document.querySelector(".weather-forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
+
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
     <div class="col-3" >
-<div class="day1" >Tomorrow</div>
-<div><img src="http://openweathermap.org/img/wn/02d@2x.png" atl="clear" width="75
+<div class="day1" >${forecastDay.dt}</div>
+<div><img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" atl="clear" width="75
   "/> </br>
-            <span class="weatherTempMin">12</span>
-            <span class="weatherTempMax">30</span>
+            <span class="weatherTempMin"${forecastDay.temp.min}°></span>
+            <span class="weatherTempMax">${forecastDay.temp.max}°</span>
             </div>
     </div>`;
   });

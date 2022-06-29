@@ -68,7 +68,8 @@ function displayForecast(response) {
   let forecastHTML = `<div class="row">`;
 
   forecast.forEach(function (forecastDay, index) {
-    if (index < 5) {
+    if (index < 4) {
+      //adds the max number of days to show on page
       forecastHTML =
         forecastHTML +
         `
@@ -78,9 +79,9 @@ function displayForecast(response) {
           forecastDay.weather[0].icon
         }@2x.png" atl="clear" width="75
   "/> </br>
-            <span class="weatherTempMin"${Math.round(
+            <span class="weatherTempMin">${Math.round(
               forecastDay.temp.min
-            )}°></span>
+            )}°<</span>
             <span class="weatherTempMax">${Math.round(
               forecastDay.temp.max
             )}°</span>
@@ -97,7 +98,7 @@ function displayForecast(response) {
 function getForecast(coordinates) {
   console.log(coordinates); //gives the latlong from search
   let forecastApiKey = "5bd76300836a0463d8f43511534ac83e";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${forecastApiKey}&unit=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${forecastApiKey}&units=metric`;
 
   console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);

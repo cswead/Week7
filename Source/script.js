@@ -51,7 +51,8 @@ function apiChosenCity(city) {
 }
 //future temperature adding
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily); //shows the daily forecast
   let forecastElement = document.querySelector(".weather-forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -73,8 +74,18 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
-// adding in weather info based on search
+//getting the forecast data
 
+function getForecast(coordinates) {
+  console.log(coordinates); //gives the latlong from search
+  let forecastApiKey = "5bd76300836a0463d8f43511534ac83e";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${forecastApiKey}&unit=metric`;
+
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
+// adding in weather info based on search
 function showWeather(response) {
   let city = document.querySelector("#topCity");
   city.innerHTML = response.data.name; // collects city info
@@ -90,6 +101,8 @@ function showWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   ); //changing the icon
   celciusTemp = response.data.main.temp;
+  //getting the forecast data
+  getForecast(response.data.coord);
 }
 
 // getting data from the geo api
@@ -126,5 +139,3 @@ farhrenhieghtLink.addEventListener("click", showFarhrenheightTemp);
 
 let celciusLink = document.querySelector(".celcius");
 celciusLink.addEventListener("click", showCelciusTemp);
-
-displayForecast();
